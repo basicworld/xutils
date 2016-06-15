@@ -1,4 +1,8 @@
 # -*- coding: utf-8 -*-
+
+import sys
+reload(sys)
+sys.setdefaultencoding('utf8')
 # https://docs.python.org/2/library/csv.html#csv-examples
 # howto:
 # f = codecs.open('testCsv.csv', 'w', encoding='utf-8')
@@ -7,7 +11,7 @@
 # self.csvFile.writerow(item.values())
 import csv, codecs, cStringIO
 
-class UTF8Recoder:
+class _UTF8Recoder(object):
     """
     Iterator that reads an encoded stream and reencodes the input to UTF-8
     """
@@ -20,14 +24,14 @@ class UTF8Recoder:
     def next(self):
         return self.reader.next().encode("utf-8")
 
-class UnicodeReader:
+class CsvReader(object):
     """
     A CSV reader which will iterate over lines in the CSV file "f",
     which is encoded in the given encoding.
     """
 
     def __init__(self, f, dialect=csv.excel, encoding="utf-8", **kwds):
-        f = UTF8Recoder(f, encoding)
+        f = _UTF8Recoder(f, encoding)
         self.reader = csv.reader(f, dialect=dialect, **kwds)
 
     def next(self):
@@ -37,13 +41,16 @@ class UnicodeReader:
     def __iter__(self):
         return self
 
-class UnicodeWriter:
+class CsvWriter(object):
     """
     A CSV writer which will write rows to CSV file "f",
     which is encoded in the given encoding.
     """
 
-    def __init__(self, f, dialect=csv.excel, encoding="utf-8", **kwds):
+    def __init__(self, f, dialect=csv.excel, encoding="utf-8", writeBOM=1, **kwds):
+        # BOM
+        if writeBOM:
+            f.write('\xEF\xBB\xBF')
         # Redirect output to a queue
         self.queue = cStringIO.StringIO()
         self.writer = csv.writer(self.queue, dialect=dialect, **kwds)
