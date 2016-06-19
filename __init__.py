@@ -24,3 +24,7 @@ from ximage import imageGetter
 from xbuild import builDir
 from xtree import Tree
 from xlog import logger
+from xtime import createTimeFromStr
+from xtime import createTimeFromDatetimeClass
+from xlsx import XlsxReader
+from xlsx import XlsxWriter
