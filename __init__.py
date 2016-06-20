@@ -8,6 +8,12 @@ __all__ = [
     'CsvWriter',
     'CsvReader',
     'imageGetter',
+    'logger',
+    'createTimeFromStr',
+    'createTimeFromDatetimeClass',
+    'XlsxReader',
+    'XlsxWriter',
+
 ]
 
 import sys
@@ -15,8 +21,8 @@ reload(sys)
 sys.setdefaultencoding('utf8')
 import os
 # set basedir
-xutilsDir = os.path.split(os.path.realpath(__file__))[0]
-sys.path.insert(0, xutilsDir)
+XUTILSDIR = os.path.split(os.path.realpath(__file__))[0]
+sys.path.insert(0, XUTILSDIR)
 
 from xcsv import CsvWriter
 from xcsv import CsvReader
