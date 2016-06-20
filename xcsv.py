@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 """
 csv for unicode
+not reccomand
+xlsx if a better one
 """
 import sys
 reload(sys)
@@ -12,6 +14,7 @@ sys.setdefaultencoding('utf8')
 # self.csvFile = UnicodeWriter(f)
 # self.csvFile.writerow(item.values())
 import csv, codecs, cStringIO
+
 
 class _UTF8Recoder(object):
     """
