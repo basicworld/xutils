@@ -2,19 +2,6 @@
 """
 common functions
 """
-__all__ = [
-    'builDir',
-    'Tree',
-    'CsvWriter',
-    'CsvReader',
-    'imageGetter',
-    'logger',
-    'createTimeFromStr',
-    'createTimeFromDatetimeClass',
-    'XlsxReader',
-    'XlsxWriter',
-
-]
 
 import sys
 reload(sys)
@@ -24,13 +11,33 @@ import os
 XUTILSDIR = os.path.split(os.path.realpath(__file__))[0]
 sys.path.insert(0, XUTILSDIR)
 
-from xcsv import CsvWriter
-from xcsv import CsvReader
-from ximage import imageGetter
-from xbuild import builDir
-from xtree import Tree
-from xlog import logger
-from xtime import createTimeFromStr
-from xtime import createTimeFromDatetimeClass
-from xlsx import XlsxReader
-from xlsx import XlsxWriter
+# try:
+#     from xcsv import CsvWriter
+# except ImportError as e:
+#     print("Warning: cannot import CsvWriter")
+
+# try:
+#     from xcsv import CsvReader
+# except ImportError as e:
+#     print("Warning: cannot import CsvWriter")
+
+# try:
+#     from ximage import imageGetter
+# except ImportError as e:
+#     print("Warning: cannot import CsvWriter")
+
+# from xbuild import builDir
+# from xtree import Tree
+# from xlog import logger
+# from xtime import createTimeFromStr
+# from xtime import createTimeFromDatetimeClass
+
+# try:
+#     from xlsx import XlsxReader
+# except ImportError as e:
+#     print("Warning: cannot import CsvWriter")
+
+# try:
+#     from xlsx import XlsxWriter
+# except ImportError as e:
+#     print("Warning: cannot import CsvWriter")
