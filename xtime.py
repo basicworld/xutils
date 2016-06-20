@@ -21,6 +21,7 @@ def createTimeFromStr(inputTime,
     outputTime = inputTime + timedelta
     return datetime.datetime.strftime(outputTime, outputFormat)
 
+
 def createTimeFromDatetimeClass(inputTime,
                                 outputFormat='%Y-%m-%d %H:%M',
                                 timeAdd=0,

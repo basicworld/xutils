@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
-
+"""
+csv for unicode
+"""
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')

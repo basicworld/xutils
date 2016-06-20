@@ -18,3 +18,10 @@ def builDir(dirName='./', fileName=''):
     if not os.path.isdir(dirName):
         os.makedirs(dirName)
     return(os.path.join(dirName, fileName) if fileName else dirName)
+
+
+def splitFile(fileName, splitSize):
+    """
+    split big file
+    """
+    pass
