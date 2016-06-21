@@ -34,6 +34,7 @@ class XlsxWriter(object):
         self.sheet_is_open = 0
 
     def createSheet(self, title=''):
+        print('createSheet')
         if not title:
             title = self.sheet_name % self.sheet_count
         if self.sheet_count == 1:
@@ -56,21 +57,23 @@ class XlsxWriter(object):
         self.row_index += 1
 
     def save(self):
+        print('save')
         if self.workbook_is_open:
             self.workbook.save(filename = self.filename)
             self.workbook_is_open = 0
 
     def __exit__(self):
         """auto save"""
-        if self.workbook_is_open:
-            self.workbook.save(filename = self.filename)
-            self.workbook_is_open = 0
+        self.save()
+
+    def __del__(self):
+        self.save()
 
 
 if __name__ == '__main__':
-    app = XlsxReader('if00.xlsx')
+    # app = XlsxReader('if00.xlsx')
     app2 = XlsxWriter('a.xlsx')
-    app2.createSheet()
-    for values in app.readRow():
-        app2.writeRow(values)
-    app2.save()
+    # app2.createSheet()
+    # for values in app.readRow():
+    app2.writeRow((1,2,3,4,5))
+    # app2.save()
